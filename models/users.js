@@ -30,8 +30,8 @@ class User {
     try {
       const response = await db.one(
         `SELECT id, first_name, last_name, password FROM users WHERE email = $1;`,
-        [this.email]
-      );
+        [this.email]);
+      console.log('response', response);
       const isValid = this.checkPassword(response.password);
       if (!!isValid) {
         console.log('SUCCESS!!!!', isValid);

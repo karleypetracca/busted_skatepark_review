@@ -1,9 +1,9 @@
 const express = require('express'),
   router = express.Router(),
-  ParksModel = require('../models/parks');
+  Parks = require('../models/parks');
 
 router.get('/', async (req, res, next) => {
-  const parkData = await ParksModel.getAll();
+  const parkData = await Parks.getAll();
 
   res.render('template', {
     locals: {
@@ -17,9 +17,9 @@ router.get('/', async (req, res, next) => {
 });
 
 router.get('/:park_id?', async (req, res, next) => {
-  const parkId = req.params.park_id;
-  const parkData = await ParksModel.getById(parkId);
-  const reviewData = await ParksModel.getReviewsById(parkId);
+  const { park_id } = req.params;
+  const parkData = await Parks.getById(park_id);
+  const reviewData = await Parks.getReviewsById(park_id);
 
   res.render('template', {
     locals: {

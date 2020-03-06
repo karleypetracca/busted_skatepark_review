@@ -7,7 +7,7 @@ const express = require('express'),
     logger = require('morgan');
 
 const indexRouter = require('./routes/index'),
-    parkRouter = require('./routes/parks')
+    parkRouter = require('./routes/parks'),
     usersRouter = require('./routes/users');
 
 const app = express();
@@ -28,6 +28,7 @@ app.use(session({
     saveUninitialized: true,
     is_logged_in: false
 }));
+
 app.use('/', indexRouter);
 app.use('/parks', parkRouter);
 app.use('/users', usersRouter);
