@@ -1,4 +1,5 @@
-const db = require('./conn');
+const db = require('./conn'),
+  bcrypt = require('bcrypt')
 
 class User {
   constructor(id, first_name, last_name, email, password) {
